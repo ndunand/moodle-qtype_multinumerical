@@ -1,0 +1,14 @@
+.que.multinumerical .paramname {
+    clear:both;
+    float:left;
+    padding: 0.3em;
+    width: 120px;
+    text-align:right;
+}
+.que.multinumerical .answer {
+    float:left;
+    padding: 0.3em;
+}
+.que.multinumerical .clearer {
+    clear:both;
+}

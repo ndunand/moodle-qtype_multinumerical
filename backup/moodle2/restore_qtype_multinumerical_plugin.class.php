@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -22,11 +21,16 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
 defined('MOODLE_INTERNAL') || die();
+
 
 /**
  * restore plugin class that provides the necessary information
  * needed to restore one multinumerical qtype plugin
+ *
+ * @copyright  2010 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_qtype_multinumerical_plugin extends restore_qtype_plugin {
 
@@ -39,7 +43,8 @@ class restore_qtype_multinumerical_plugin extends restore_qtype_plugin {
 
         // Add own qtype stuff
         $elename = 'multinumerical';
-        $elepath = $this->get_pathfor('/multinumerical'); // we used get_recommended_name() so this works
+        // we used get_recommended_name() so this works
+        $elepath = $this->get_pathfor('/multinumerical');
         $paths[] = new restore_path_element($elename, $elepath);
 
         return $paths; // And we return the interesting paths
@@ -61,10 +66,11 @@ class restore_qtype_multinumerical_plugin extends restore_qtype_plugin {
 
 // echo '<pre>old = '.$oldquestionid.' , new = '.$newquestionid.' qcr? = ' . $questioncreated . '</pre>'; die();
 
-        // If the question has been created by restore, we need to create its question_multinumerical too
+        // If the question has been created by restore, we need to create its
+        // question_multinumerical too
         if ($questioncreated) {
             // Adjust some columns
-            $data->questionid = $newquestionid;
+            $data->question = $newquestionid;
             // Insert record
             $newitemid = $DB->insert_record('question_multinumerical', $data);
             // Create mapping

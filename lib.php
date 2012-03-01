@@ -15,19 +15,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Multinumerical question type version information.
+ * Serve question type files
  *
+ * @since      2.0
  * @package    qtype
  * @subpackage multinumerical
- * @copyright  1999 onwards Martin Dougiamas {@link http://moodle.com}
+ * @copyright  Dongsheng Cai <dongsheng@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'qtype_multinumerical';
-$plugin->version   = 2012010100;
 
-$plugin->requires  = 2011102700;
-
-$plugin->maturity  = MATURITY_STABLE;
+/**
+ * Checks file access for Multinumerical questions.
+ */
+function qtype_multinumerical_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload) {
+    global $DB, $CFG;
+    require_once($CFG->libdir . '/questionlib.php');
+    question_pluginfile($course, $context, 'qtype_multinumerical', $filearea, $args, $forcedownload);
+}

@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -15,19 +16,38 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Multinumerical question type version information.
- *
  * @package    qtype
  * @subpackage multinumerical
- * @copyright  1999 onwards Martin Dougiamas {@link http://moodle.com}
+ * @copyright  2011 David Mudrak <david@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'qtype_multinumerical';
-$plugin->version   = 2012010100;
+/**
+ * Multinumerical question type conversion handler
+ */
+class moodle1_qtype_multinumerical_handler extends moodle1_qtype_handler {
 
-$plugin->requires  = 2011102700;
+    /**
+     * @return array
+     */
+    public function get_question_subpaths() {
+        return array(
+            'MULTINUMERICAL',
+        );
+    }
 
-$plugin->maturity  = MATURITY_STABLE;
+    /**
+     * Appends the multinumerical specific information to the question
+     */
+    public function process_question(array $data, array $raw) {
+
+        // convert and write the multinumerical extra fields
+        foreach ($data['multinumerical'] as $multinumerical) {
+            $multinumerical['id'] = $this->converter->get_nextid();
+
+            $this->write_xml('multinumerical', $multinumerical, array('/multinumerical/id'));
+        }
+    }
+}
