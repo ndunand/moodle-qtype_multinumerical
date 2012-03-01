@@ -29,5 +29,6 @@ $plugin->component = 'qtype_multinumerical';
 $plugin->version   = 2012010100;
 
 $plugin->requires  = 2011120100;
+$plugin->release   = '2.2';
 
 $plugin->maturity  = MATURITY_BETA;
