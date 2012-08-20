@@ -23,8 +23,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Multinumerical (BETA)';
-$string['answer'] = 'Votre réponse : {$a}';
+$string['pluginname'] = 'Multinumerical';
+$string['answer'] = 'Your answer: {$a}';
 $string['pleaseenterananswer'] = 'Please enter an answer';
 
 $string['pluginname_link'] = 'question/type/multinumerical';
@@ -48,77 +48,37 @@ $string['conditionverified'] = 'Verified constraint';
 $string['displaycalc'] = 'Display calculation result';
 $string['helponquestionoptions'] = 'For more information on this question type and the behaviour of the following options, please click the help button at the top of this form.';
 $string['pluginname_help'] = <<<EOF
-<h2>Principe de fonctionnement</h2>
-<p>Une question de type &quot;multinumérique&quot; permet de poser une question dont
-l'étudiant doit calculer la réponse, cette réponse étant composée de plusieurs
-paramètres (numériques).</p>
-<p><strong>Exemple de question :</strong> entrer <span style="font-family:monospace">X</span>
-et <span style="font-family:monospace">Y</span> tels que</p>
+<h2>How this works</h2>
+<p>A multinumerical question allows to ask students for an answer made of several (numeric) parameters.</p>
+<p><strong>Example:</strong> find <span style="font-family:monospace">X</span> and <span style="font-family:monospace">Y</span> such that </p>
 <ul><li>X + Y &lt; 20</li><li>X * Y &gt; 35</li></ul>
-<p>Il existe <em>a priori</em> plusieurs solutions à ce problème, et n'importe quelle
-réponse répondant à ces deux conditions devrait pouvoir être considérée comme correcte.</p>
-
-<p>Ce type de question permet donc de définir les paramètres demandés (ici,
-<span style="font-family:monospace">X</span> et <span style="font-family:monospace">Y</span>)
-et les contraintes auxquelles ces paramètres doivent répondre.</p>
-
-<h2>Utilisation par l'enseignant</h2>
-
+<p>There are <em>possibly</em> several correct answers to this question, and any answer satisfying these conditions should be considered correct.</p>
+<p>This question type allows then to define the parameters we're looking for (here, <span style="font-family:monospace">X</span> and <span style="font-family:monospace">Y</span>) and the given constraints.</p>
+<h2>Usage</h2>
 <ul>
-	<li>Définir les paramètre standards de la question (catégorie, titre, texte de
-	la question, poids, pénalité, feedback général).</li>
-</ul><ul>
-	<li>Entrer les paramètres à demander, séparés par des virgules (dans notre exemple,
-	on entrerait &quot;<span style="font-family:monospace">X,Y</span>&quot;).<br />
-	<strong>Note :</strong> on peut entrer des unités après chaque paramètre, soit par exemple
-	&quot;<span style="font-family:monospace">X [m],Y [h]</span>&quot; (mettre un espace
-	entre le nom du paramètre et son unité).</li>
-</ul><ul>
-	<li>Entrer les contraintes, séparées par un retour à la ligne ; dans notre exemple,
-	on entrerait : <pre>X + Y &lt; 20
-X * Y &gt; 35</pre>(les lignes vides seront ignorées)
-    <p>Les opérateurs disponibles sont : <ul>
-        <li>&quot;<span style="font-family:monospace">=</span>&quot; (égalité)</li>
-        <li>&quot;<span style="font-family:monospace">&lt;</span>&quot; (inférieur à)</li>
-        <li>&quot;<span style="font-family:monospace">&lt;=</span>&quot; (inférieur ou égal à)</li>
-        <li>&quot;<span style="font-family:monospace">&gt;</span>&quot; (supérieur à)</li>
-        <li>&quot;<span style="font-family:monospace">&gt;=</span>&quot; (supérieur ou égal à)</li>
-        <li>l'opérateur d'intervalle :
-            <pre><span style="font-family:monospace">X = [1;5]</span></pre> signifie que
-            <span style="font-family:monospace">X</span> doit se trouver entre 1 et 5 compris, et
-            <pre><span style="font-family:monospace">X = ]1;5[</span></pre> signifie que
-            <span style="font-family:monospace">X</span> doit se trouver entre 1 et 5 non compris,
-            (se référer à la définition des intervalles en mathématiques).
+	<li>Enter a list of comma-separated parameters (in our example &quot;<span style="font-family:monospace">X,Y</span>&quot;).<br />
+	<strong>Note :</strong> units may be entered after each parameter:
+	&quot;<span style="font-family:monospace">X [m],Y [h]</span>&quot; (a blank space has to exist between the parameter and its unit).</li>
+	<li>Enter the constraints, one per line; in our example: <pre>X + Y &lt; 20
+X * Y &gt; 35</pre>(empty lines will be ignored)
+    <p>Available operators are : <ul>
+        <li>&quot;<span style="font-family:monospace">=</span>&quot; (equality)</li>
+        <li>&quot;<span style="font-family:monospace">&lt;</span>&quot; (less than)</li>
+        <li>&quot;<span style="font-family:monospace">&lt;=</span>&quot; (less or equal)</li>
+        <li>&quot;<span style="font-family:monospace">&gt;</span>&quot; (greater than)</li>
+        <li>&quot;<span style="font-family:monospace">&gt;=</span>&quot; (greater or equal)</li>
+        <li>intervals:
+            <pre><span style="font-family:monospace">X = [1;5]</span></pre> (closed)
+            <pre><span style="font-family:monospace">X = ]1;5[</span></pre> (open)
         </li>
     </ul></p></li>
-</ul><ul>
-	<li>Entrer si désiré un feedback pour chaque contrainte. Dans notre exemple, on
-	pourrait par exemple entrer :
-    <pre>OK : X + Y &lt; 20 | Non, X + Y &gt;= 20 !
-OK : X * Y &gt; 35 | Non, X + Y &lt;= 35 !</pre>
-    <p>Cette syntaxe permet d'afficher un feedback relatif à chaque contrainte, et pour
-chaque feedback d'afficher un texte différent selon que la contrainte est remplie
-ou non. Les lignes ne correspondant à aucune condition sont ignorées.</p>
+	<li>Enter if desired a feedback for each constraint. In our example, one could enter:
+    <pre>OK : X + Y &lt; 20 | No, X + Y &gt;= 20 !
+OK : X * Y &gt; 35 | No, X + Y &lt;= 35 !</pre>
     </li>
-</ul><ul>
-    <li>L'option &quot;Afficher le résultat du calcul&quot; permet de définir si le feedback
-    par contrainte doit contenir une évaluation numérique de chacune des contraintes.
-    L'affichage de cette évaluation numérique n'a lieu que si le feedback par contrainte
-    (positif ou négatif, suivant la réponse de l'apprenant) contient du texte.<br />
-    Si on choisit ici &quot;Seulement pour les calculs&quot;, ceci ne s'affichera pas pour les
-    contraintes non calculées (de type <span style="font-family:monospace">X&nbsp;>&nbsp;5</span>), afin
-    de ne pas donner la solution à l'apprenant.</li>
-</ul><ul>
-    <li>L'option &quot;Calcul des points&quot; permet de définir si une réponse
-    partiellement correcte (remplissant une partie des contraintes seulement) doit obtenir
-    une partie des points, ou aucun point.</li>
+    <li>If &quot;Display calculation result&quot; is checked, the feedback will display a numerical evaluation of each of the constraints.
+    This is only displayed if the feedback for this constraint is not empty.<br />
+    If &quot;Only for calculations&quot; is checked, this will not be displayed for non-calculated constraints (such as <span style="font-family:monospace">X&nbsp;>&nbsp;5</span>), in order to not give away the answer to the learner.</li>
+    <li>The &quot;Grade calculation&quot; option defines whether a partially correct answer yields a fraction of the grade, or the null grade.</li>
 </ul>
-
-<h2>Utilisation par l'apprenant</h2>
-
-<p>L'apprenant se voit présenté le texte de la question, et un nombre de champs
-égal au nombre de paramètres demandés.</p>
-<p>Il entre alors une valeur dans chaque champ, et se voit alors présenté un feedbcak
-(positif ou négatif) pour chaque contrainte (si ceux-ci ont été définis par l'enseignant).</p>
-<p>Le feedback général s'affiche quelle que soit la réponse.</p>
 EOF;
