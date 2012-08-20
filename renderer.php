@@ -49,6 +49,8 @@ class qtype_multinumerical_renderer extends qtype_renderer {
         $result .= html_writer::start_tag('div', array('class' => 'ablock'));
 
         $parameters = explode(',', $question->parameters);
+        $result .= html_writer::start_tag('table');
+        $result .= html_writer::start_tag('tbody');
         foreach ($parameters as $parameter) {
             $parameter = trim($parameter);
             if (preg_match('/^(\w+).*(\[[^]]+\])$/', $parameter, $matches)) {
@@ -56,6 +58,7 @@ class qtype_multinumerical_renderer extends qtype_renderer {
                 $unity = $matches[2];
             }
             else {
+                $parameter_name = $parameter;
                 $unity = '';
             }
             $inputname['param_'.$parameter_name] = $qa->get_qt_field_name('answer_'.$parameter_name);
@@ -65,15 +68,19 @@ class qtype_multinumerical_renderer extends qtype_renderer {
                 'name' => $inputname['param_'.$parameter_name],
                 'value' => $currentanswer['param_'.$parameter_name],
                 'id' => $inputname['param_'.$parameter_name],
-                'size' => 40,
+                'size' => 20,
             );
             if ($options->readonly) {
                 $inputattributes['param_'.$parameter_name]['readonly'] = 'readonly';
             }
             $input['param_'.$parameter_name] = html_writer::empty_tag('input', $inputattributes['param_'.$parameter_name]);
-            $result .= html_writer::tag('div', $parameter . ' : ', array('class' => 'paramname'));
-            $result .= html_writer::tag('div', $input['param_'.$parameter_name], array('class' => 'answer'));
+            $result .= html_writer::start_tag('tr');
+            $result .= html_writer::tag('td', $parameter . ' : ', array('class' => 'paramname'));
+            $result .= html_writer::tag('td', $input['param_'.$parameter_name], array('class' => 'answer'));
+            $result .= html_writer::end_tag('tr');
         }
+        $result .= html_writer::end_tag('tbody');
+        $result .= html_writer::end_tag('table');
 
         $result .= html_writer::end_tag('div');
         $result .= html_writer::tag('div', '', array('class' => 'clearer'));

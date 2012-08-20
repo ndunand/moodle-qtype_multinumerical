@@ -19,7 +19,7 @@
  *
  * @package    qtype
  * @subpackage multinumerical
- * @copyright  2007 Jamie Pratt
+ * @copyright  2012 Nicolas Dunand
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Multinumerical question editing form definition.
  *
- * @copyright  2007 Jamie Pratt
+ * @copyright  2012 Nicolas Dunand
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_multinumerical_edit_form extends question_edit_form {

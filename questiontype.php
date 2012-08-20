@@ -39,7 +39,7 @@ require_once($CFG->dirroot . '/question/type/multinumerical/question.php');
  */
 class qtype_multinumerical extends question_type {
 
-    protected function questionid_column_name() {
+    public function questionid_column_name() {
         return 'question';
     }
 

@@ -109,7 +109,7 @@ class qtype_multinumerical_question extends question_graded_automatically {
     		}
     		else {
     			$conditionsfullfilled[] = 0;
-    			if (strlen(trim($feedbackforthiscondition[1])) > 0) {
+    			if (isset($feedbackforthiscondition[1]) && strlen(trim($feedbackforthiscondition[1])) > 0) {
     				if ($this->usecolorforfeedback) {
 	    				$feedbackperconditions_computed[$conditionid] = '<span style="color:#f00">';
 	    				$feedbackperconditions_computed[$conditionid] .= (preg_match('/(usepackage{color})/', $CFG->filter_tex_latexpreamble)) ? (preg_replace('/(.*)\$\$(.*)\$\$(.*)/', '${1}\$\$\\textcolor{red}{${2}}\$\$${3}', $feedbackforthiscondition[1])) : ($feedbackforthiscondition[1]);
