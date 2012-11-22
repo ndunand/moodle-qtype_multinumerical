@@ -47,13 +47,13 @@ $string['conditionnotverified'] = 'Unverified constraint';
 $string['conditionverified'] = 'Verified constraint';
 $string['displaycalc'] = 'Display calculation result';
 $string['helponquestionoptions'] = 'For more information on this question type and the behaviour of the following options, please click the help button at the top of this form.';
-$string['pluginname_help'] = <<<EOF
+$string['pluginname_help'] = '
 <h2>How this works</h2>
 <p>A multinumerical question allows to ask students for an answer made of several (numeric) parameters.</p>
 <p><strong>Example:</strong> find <span style="font-family:monospace">X</span> and <span style="font-family:monospace">Y</span> such that </p>
 <ul><li>X + Y &lt; 20</li><li>X * Y &gt; 35</li></ul>
 <p>There are <em>possibly</em> several correct answers to this question, and any answer satisfying these conditions should be considered correct.</p>
-<p>This question type allows then to define the parameters we're looking for (here, <span style="font-family:monospace">X</span> and <span style="font-family:monospace">Y</span>) and the given constraints.</p>
+<p>This question type allows then to define the parameters we\'re looking for (here, <span style="font-family:monospace">X</span> and <span style="font-family:monospace">Y</span>) and the given constraints.</p>
 <h2>Usage</h2>
 <ul>
 	<li>Enter a list of comma-separated parameters (in our example &quot;<span style="font-family:monospace">X,Y</span>&quot;).<br />
@@ -81,4 +81,4 @@ OK : X * Y &gt; 35 | No, X + Y &lt;= 35 !</pre>
     If &quot;Only for calculations&quot; is checked, this will not be displayed for non-calculated constraints (such as <span style="font-family:monospace">X&nbsp;>&nbsp;5</span>), in order to not give away the answer to the learner.</li>
     <li>The &quot;Grade calculation&quot; option defines whether a partially correct answer yields a fraction of the grade, or the null grade.</li>
 </ul>
-EOF;
+';

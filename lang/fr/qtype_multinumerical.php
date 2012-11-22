@@ -47,15 +47,15 @@ $string['conditionnotverified'] = 'Contrainte non vérifiée';
 $string['conditionverified'] = 'Contrainte vérifiée';
 $string['displaycalc'] = 'Afficher le résultat du calcul';
 $string['helponquestionoptions'] = 'Pour plus d\'informations, veuillez cliquer sur le bouton d\'aide en haut de cette page.';
-$string['pluginname_help'] = <<<EOF
+$string['pluginname_help'] = '
 <h2>Principe de fonctionnement</h2>
-<p>Une question de type &quot;multinumérique&quot; permet de poser une question dont l'étudiant doit calculer la réponse, cette réponse étant composée de plusieurs paramètres (numériques).</p>
+<p>Une question de type &quot;multinumérique&quot; permet de poser une question dont l\'étudiant doit calculer la réponse, cette réponse étant composée de plusieurs paramètres (numériques).</p>
 <p><strong>Exemple de question :</strong> entrer <span style="font-family:monospace">X</span> et <span style="font-family:monospace">Y</span> tels que</p>
 <ul><li>X + Y &lt; 20</li><li>X * Y &gt; 35</li></ul>
-<p>Il existe <em>a priori</em> plusieurs solutions à ce problème, et n'importe quelle
+<p>Il existe <em>a priori</em> plusieurs solutions à ce problème, et n\'importe quelle
 réponse répondant à ces deux conditions devrait pouvoir être considérée comme correcte.</p>
 <p>Ce type de question permet donc de définir les paramètres demandés (ici, <span style="font-family:monospace">X</span> et <span style="font-family:monospace">Y</span>) et les contraintes auxquelles ces paramètres doivent répondre.</p>
-<h2>Utilisation par l'enseignant</h2>
+<h2>Utilisation par l\'enseignant</h2>
 <ul>
 	<li>Entrer les paramètres à demander, séparés par des virgules (dans notre exemple,
 	on entrerait &quot;<span style="font-family:monospace">X,Y</span>&quot;).<br />
@@ -71,7 +71,7 @@ X * Y &gt; 35</pre>(les lignes vides seront ignorées)
         <li>&quot;<span style="font-family:monospace">&lt;=</span>&quot; (inférieur ou égal à)</li>
         <li>&quot;<span style="font-family:monospace">&gt;</span>&quot; (supérieur à)</li>
         <li>&quot;<span style="font-family:monospace">&gt;=</span>&quot; (supérieur ou égal à)</li>
-        <li>l'opérateur d'intervalle :
+        <li>l\'opérateur d\'intervalle :
             <pre><span style="font-family:monospace">X = [1;5]</span></pre> signifie que
             <span style="font-family:monospace">X</span> doit se trouver entre 1 et 5 compris, et
             <pre><span style="font-family:monospace">X = ]1;5[</span></pre> signifie que
@@ -85,15 +85,15 @@ X * Y &gt; 35</pre>(les lignes vides seront ignorées)
 OK : X * Y &gt; 35 | Non, X + Y &lt;= 35 !</pre>
     <p>Les lignes ne correspondant à aucune condition sont ignorées.</p>
     </li>
-    <li>L'option &quot;Afficher le résultat du calcul&quot; permet de définir si le feedback
+    <li>L\'option &quot;Afficher le résultat du calcul&quot; permet de définir si le feedback
     par contrainte doit contenir une évaluation numérique de chacune des contraintes.
-    L'affichage de cette évaluation numérique n'a lieu que si le feedback par contrainte
-    (positif ou négatif, suivant la réponse de l'apprenant) contient du texte.<br />
-    Si on choisit ici &quot;Seulement pour les calculs&quot;, ceci ne s'affichera pas pour les
+    L\'affichage de cette évaluation numérique n\'a lieu que si le feedback par contrainte
+    (positif ou négatif, suivant la réponse de l\'apprenant) contient du texte.<br />
+    Si on choisit ici &quot;Seulement pour les calculs&quot;, ceci ne s\'affichera pas pour les
     contraintes non calculées (de type <span style="font-family:monospace">X&nbsp;>&nbsp;5</span>), afin
-    de ne pas donner la solution à l'apprenant.</li>
-    <li>L'option &quot;Calcul des points&quot; permet de définir si une réponse
+    de ne pas donner la solution à l\'apprenant.</li>
+    <li>L\'option &quot;Calcul des points&quot; permet de définir si une réponse
     partiellement correcte (remplissant une partie des contraintes seulement) doit obtenir
     une partie des points, ou aucun point.</li>
 </ul>
-EOF;
+';
