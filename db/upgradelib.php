@@ -27,5 +27,27 @@
 defined('MOODLE_INTERNAL') || die();
 
 
-abstract class qtype_multinumerical_qe2_attempt_updater extends question_qtype_attempt_updater {
+class qtype_multinumerical_qe2_attempt_updater extends question_qtype_attempt_updater {
+
+    public function right_answer() {
+        return '';
+    }
+
+    public function was_answered($state) {
+        return false;
+    }
+
+    public function response_summary($state) {
+        return '';
+    }
+
+    public function set_first_step_data_elements($state, &$data) {
+    }
+
+    public function supply_missing_first_step_data(&$data) {
+    }
+
+    public function set_data_elements_for_step($state, &$data) {
+    }
+
 }

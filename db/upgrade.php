@@ -59,5 +59,7 @@ function xmldb_qtype_multinumerical_upgrade($oldversion = 0) {
         // multinumerical savepoint reached
         upgrade_plugin_savepoint(true, 2012110100, 'qtype', 'multinumerical');
     }
+
+    return $result;
 }
 

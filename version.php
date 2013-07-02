@@ -27,9 +27,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qtype_multinumerical';
-$plugin->version   = 2013060100;
+$plugin->version   = 2013070100;
 
 $plugin->requires  = 2011120100;
-$plugin->release   = '2.5 for Moodle 2.3-2.5';
+$plugin->release   = '2.5.1 for Moodle 2.3-2.5';
 
 $plugin->maturity  = MATURITY_STABLE;
