@@ -66,7 +66,7 @@ class qtype_multinumerical_renderer extends qtype_renderer {
             $inputattributes['param_'.$parameter_name] = array(
                 'type' => 'text',
                 'name' => $inputname['param_'.$parameter_name],
-                'value' => $currentanswer['param_'.$parameter_name],
+                'value' => s($currentanswer['param_'.$parameter_name]),
                 'id' => $inputname['param_'.$parameter_name],
                 'size' => 20,
             );

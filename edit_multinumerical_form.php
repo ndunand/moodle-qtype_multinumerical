@@ -44,8 +44,11 @@ class qtype_multinumerical_edit_form extends question_edit_form {
                 get_string('helponquestionoptions', 'qtype_multinumerical'));
 
         $mform->addElement('text', 'parameters', get_string('parameters', 'qtype_multinumerical'), array('size' => 80));
+        $mform->setType('parameters', PARAM_TEXT);
         $mform->addElement('textarea', 'conditions', get_string('conditions', 'qtype_multinumerical'), array('rows' => 6, 'cols' => 80));
+        $mform->setType('conditions', PARAM_TEXT);
         $mform->addElement('textarea', 'feedbackperconditions', get_string('feedbackperconditions', 'qtype_multinumerical'), array('rows' => 6, 'cols' => 80));
+        $mform->setType('feedbackperconditions', PARAM_TEXT);
 
         $usecolorforfeedback_menu = array(
             get_string('no'),
@@ -53,6 +56,7 @@ class qtype_multinumerical_edit_form extends question_edit_form {
         );
         $mform->addElement('select', 'usecolorforfeedback',
                 get_string('usecolorforfeedback', 'qtype_multinumerical'), $usecolorforfeedback_menu);
+        $mform->setType('usecolorforfeedback', PARAM_INT);
 
         $displaycalc_menu = array(
             get_string('no'),
@@ -61,6 +65,7 @@ class qtype_multinumerical_edit_form extends question_edit_form {
         );
         $mform->addElement('select', 'displaycalc',
                 get_string('displaycalc', 'qtype_multinumerical'), $displaycalc_menu);
+        $mform->setType('displaycalc', PARAM_INT);
 
         $binarygrade_menu = array(
             get_string('gradefractional', 'qtype_multinumerical'),
@@ -68,6 +73,7 @@ class qtype_multinumerical_edit_form extends question_edit_form {
         );
         $mform->addElement('select', 'binarygrade',
                 get_string('binarygrade', 'qtype_multinumerical'), $binarygrade_menu);
+        $mform->setType('binarygrade', PARAM_INT);
 
         $this->add_interactive_settings();
     }
