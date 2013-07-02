@@ -15,20 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Multinumerical question type version information.
+ * Version information
  *
  * @package    qtype
  * @subpackage multinumerical
- * @copyright  1999 onwards Martin Dougiamas {@link http://moodle.com}
+ * @copyright  2013 Université de Lausanne
+ * @author     Nicolas Dunand <Nicolas.Dunand@unil.ch>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qtype_multinumerical';
-$plugin->version   = 2012110100;
+$plugin->version   = 2013060100;
 
 $plugin->requires  = 2011120100;
-$plugin->release   = '2.3';
+$plugin->release   = '2.5 for Moodle 2.3-2.5';
 
 $plugin->maturity  = MATURITY_STABLE;

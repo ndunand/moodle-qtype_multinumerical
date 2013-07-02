@@ -15,26 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Upgrade library code for the multinumerical question type.
+ * Version information
  *
  * @package    qtype
  * @subpackage multinumerical
- * @copyright  2010 The Open University
+ * @copyright  2013 Université de Lausanne
+ * @author     Nicolas Dunand <Nicolas.Dunand@unil.ch>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 defined('MOODLE_INTERNAL') || die();
 
 
-/**
- * Class for converting attempt data for multinumerical questions when upgrading
- * attempts to the new question engine.
- *
- * This class is used by the code in question/engine/upgrade/upgradelib.php.
- *
- * @copyright  2010 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-class qtype_multinumerical_qe2_attempt_updater extends question_qtype_attempt_updater {
+abstract class qtype_multinumerical_qe2_attempt_updater extends question_qtype_attempt_updater {
 }

@@ -15,24 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the editing form for the multinumerical question type.
+ * Version information
  *
  * @package    qtype
  * @subpackage multinumerical
- * @copyright  2012 Nicolas Dunand
+ * @copyright  2013 Université de Lausanne
+ * @author     Nicolas Dunand <Nicolas.Dunand@unil.ch>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 defined('MOODLE_INTERNAL') || die();
 
 
-/**
- * Multinumerical question editing form definition.
- *
- * @copyright  2012 Nicolas Dunand
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class qtype_multinumerical_edit_form extends question_edit_form {
 
     protected function definition_inner($mform) {

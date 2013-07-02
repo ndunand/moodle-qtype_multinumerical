@@ -15,24 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Multinumerical question definition class.
+ * Version information
  *
  * @package    qtype
  * @subpackage multinumerical
- * @copyright  2009 The Open University
+ * @copyright  2013 Université de Lausanne
+ * @author     Nicolas Dunand <Nicolas.Dunand@unil.ch>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 defined('MOODLE_INTERNAL') || die();
 
-
-/**
- * Represents a Multinumerical question.
- *
- * @copyright  2009 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class qtype_multinumerical_question extends question_graded_automatically {
 
     public function get_expected_data() {
@@ -40,7 +33,6 @@ class qtype_multinumerical_question extends question_graded_automatically {
         foreach ($this->get_parameters() as $parameter) {
             $return['answer_'.$parameter] = PARAM_RAW_TRIMMED;
         }
-//        echo '<pre>'; print_r($return); echo '</pre>';
         return $return;
     }
 
@@ -60,7 +52,6 @@ class qtype_multinumerical_question extends question_graded_automatically {
                 $parameter = $matches[1];
             }
         }
-//        echo '<pre>' . print_r($parameters, true) . '</pre>'; die();
         return $parameters;
     }
 
@@ -132,11 +123,11 @@ class qtype_multinumerical_question extends question_graded_automatically {
     }
 
     private function check_condition($condition, &$values, $response) {
-//        echo '<pre>R : '; print_r($response); echo '</pre>';
         global $CFG;
         $values = '';
         $interval = false;
-        $operators = array('<=', '>=', '<', '>', '='); // ND : careful with operators relative positions here, see following foreach()
+        $operators = array('<=', '>=', '<', '>', '=');
+        // careful with operators relative positions here, see following foreach()
         foreach ($operators as $operator) {
             $operatorposition = strpos($condition, $operator);
             if ($operatorposition !== false) {
@@ -146,12 +137,12 @@ class qtype_multinumerical_question extends question_graded_automatically {
                 break;
             }
         }
-        include_once($CFG->dirroot.'/question/type/multinumerical/math.class.php');
+        include_once($CFG->libdir.'/evalmath/evalmath.class.php');
         $math = new EvalMath();
         $math->suppress_errors = true;
-        // filling variables :
+        // assigning variables values :
         foreach ($response as $param => $value) {
-        	// EvalMath n'aime pas les noms de variables avec majuscules
+        	// EvalMath doesn't like uppercase variable names
         	$math->evaluate(strtolower(substr($param, 7)).'='.$value);
         }
         $leftvalue = $math->evaluate($left);
@@ -159,44 +150,42 @@ class qtype_multinumerical_question extends question_graded_automatically {
             $operator = '==';
             $matches = array();
             if (preg_match('/^\s*([A-Z]*[a-z]*\w*)\s*=\s*([\[|\]])(.+);(.+)([\[|\]])$/', $condition, $matches)) {
-                    $interval = true;
-                    $operator = "";
-                    $rightvalue = ($matches[2] == "[") ? (">=") : (">");
-                    $val1 = $math->evaluate($matches[3]);
-                    $val2 = $math->evaluate($matches[4]);
-                    $rightvalue .= $val1 . " && " . $leftvalue;
-                    $rightvalue .= ($matches[5] == "]") ? ("<=") : ("<");
-                    $rightvalue .= $val2;
+                // we're dealing with an interval
+                $interval = true;
+                $operator = '';
+                $rightvalue = ($matches[2] == "[") ? (">=") : (">");
+                $val1 = (float)$math->evaluate(strtolower($matches[3]));
+                $val2 = (float)$math->evaluate(strtolower($matches[4]));
+                // failsafe : EvalMath returns false instead of zero, so cast result as float
+                $rightvalue .= $val1 . " && " . $leftvalue;
+                $rightvalue .= ($matches[5] == "]") ? ("<=") : ("<");
+                $rightvalue .= $val2;
             }
         }
         if (!$interval) {
             $rightvalue = $math->evaluate($right);
-            $values .= number_format($leftvalue,2,'.',"'").' '.$operator.' '.number_format($rightvalue,2,'.',"'");
+            $values .= number_format($leftvalue, 2, '.', "'").' '.$operator.' '.number_format($rightvalue,2,'.',"'");
         }
         else {
             $values .= $leftvalue.' = '.$matches[2].number_format($val1,3,'.',"'").';'.number_format($val2,3,'.',"'").$matches[5];
         }
-//die(__LINE__.' : return('.$leftvalue.$operator.$rightvalue.');');
     	if (strlen($leftvalue) > 0 && isset($operator) && strlen($rightvalue) > 0 && eval('return('.$leftvalue.$operator.$rightvalue.');')) {
     	    $valuesspan = '<span';
     	    $valuesspan .= ($this->usecolorforfeedback) ? (' style="color:#090"') : ('');
     	    $valuesspan .= '>'.get_string('conditionverified', 'qtype_multinumerical').' : '.$values.'</span>';
     	    $values = $valuesspan;
-    	    //if ($USER->id == 1064) { echo "\ntrue</pre>"; }
           return true;
         }
         $valuesspan = '<span';
         $valuesspan .= ($this->usecolorforfeedback) ? (' style="color:#f00"') : ('');
         $valuesspan .= '>'.get_string('conditionnotverified', 'qtype_multinumerical').' : '.$values.'</span>';
         $values = $valuesspan;
-        //if ($USER->id == 1064) { echo "\nfalse : ".$leftvalue.$operator.$rightvalue."</pre>"; }
         return false;
     }
 
     public function is_complete_response(array $response) {
         foreach($this->get_parameters() as $param) {
             if (!array_key_exists('answer_'.$param, $response) || (!$response['answer_'.$param] && $response['answer_'.$param] !== '0')) {
-//                die('param missing : '.$param);
                 return false;
             }
         }
@@ -248,14 +237,9 @@ class qtype_multinumerical_question extends question_graded_automatically {
     public function grade_response(array $response){
     	$score = $this->compute_feedbackperconditions($response);
         $fraction = $score / sizeof($this->get_conditions());
-//        echo '<pre> SCORE : '; print_r($score); echo '</pre>';
-//        echo '<pre> nbConditions : '; print_r($this->get_conditions()); echo '</pre>';
-//        echo '<pre> FRACTION : '; print_r($score / sizeof($this->get_conditions())); echo '</pre>';
-//        echo '<pre> FRACTION : '; print_r($fraction); echo '</pre>';
         if ($this->binarygrade) {
             $fraction = floor($fraction);
         }
-//        die('f='.$fraction);
         return array($fraction, question_state::graded_state_for_fraction($fraction));
     }
 }

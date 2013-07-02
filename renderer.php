@@ -15,31 +15,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Multinumerical question renderer class.
+ * Version information
  *
  * @package    qtype
  * @subpackage multinumerical
- * @copyright  2009 The Open University
+ * @copyright  2013 Université de Lausanne
+ * @author     Nicolas Dunand <Nicolas.Dunand@unil.ch>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 defined('MOODLE_INTERNAL') || die();
 
 
-/**
- * Generates the output for Multinumerical questions.
- *
- * @copyright  2009 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class qtype_multinumerical_renderer extends qtype_renderer {
     public function formulation_and_controls(question_attempt $qa,
             question_display_options $options) {
 
         $question = $qa->get_question();
 
-//echo '<pre>'.print_r($qa, true).'</pre>';
         $currentanswer = array();
         $inputattributes = array();
         $input = array();

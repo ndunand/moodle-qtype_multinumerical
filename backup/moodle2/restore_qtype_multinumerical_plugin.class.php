@@ -15,23 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    moodlecore
- * @subpackage backup-moodle2
- * @copyright  2010 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
+ * Version information
+ *
+ * @package    qtype
+ * @subpackage multinumerical
+ * @copyright  2013 Université de Lausanne
+ * @author     Nicolas Dunand <Nicolas.Dunand@unil.ch>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 defined('MOODLE_INTERNAL') || die();
 
 
-/**
- * restore plugin class that provides the necessary information
- * needed to restore one multinumerical qtype plugin
- *
- * @copyright  2010 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class restore_qtype_multinumerical_plugin extends restore_qtype_plugin {
 
     /**
@@ -63,8 +58,6 @@ class restore_qtype_multinumerical_plugin extends restore_qtype_plugin {
         $oldquestionid   = $this->get_old_parentid('question');
         $newquestionid   = $this->get_new_parentid('question');
         $questioncreated = $this->get_mappingid('question_created', $oldquestionid) ? true : false;
-
-// echo '<pre>old = '.$oldquestionid.' , new = '.$newquestionid.' qcr? = ' . $questioncreated . '</pre>'; die();
 
         // If the question has been created by restore, we need to create its
         // question_multinumerical too
