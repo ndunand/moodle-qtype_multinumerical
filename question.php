@@ -124,6 +124,8 @@ class qtype_multinumerical_question extends question_graded_automatically {
 
     private function check_condition($condition, &$values, $response) {
         global $CFG;
+        $decsep = get_string('decsep', 'langconfig');
+        $thousandssep = get_string('thousandssep', 'langconfig');
         $values = '';
         $interval = false;
         $operators = array('<=', '>=', '<', '>', '=');
@@ -141,7 +143,13 @@ class qtype_multinumerical_question extends question_graded_automatically {
         $math = new EvalMath();
         $math->suppress_errors = true;
         // assigning variables values :
-        foreach ($response as $param => $value) {
+        foreach ($response as $param => &$value) {
+            // in case someone used locale-dependant $decsep and/or $thousandssep,
+            // make it machine-readable:
+            $value = str_replace(' ', '', $value);
+            $value = str_replace($thousandssep, '', $value);
+            $value = str_replace($decsep, '.', $value);
+            $value = floatval($value);
         	// EvalMath doesn't like uppercase variable names
         	$math->evaluate(strtolower(substr($param, 7)).'='.$value);
         }
@@ -164,10 +172,10 @@ class qtype_multinumerical_question extends question_graded_automatically {
         }
         if (!$interval) {
             $rightvalue = $math->evaluate($right);
-            $values .= number_format($leftvalue, 2, '.', "'").' '.$operator.' '.number_format($rightvalue,2,'.',"'");
+            $values .= number_format($leftvalue, 2, $decsep, $thousandssep) . ' '.$operator.' ' . number_format($rightvalue, 2, $decsep, $thousandssep);
         }
         else {
-            $values .= $leftvalue.' = '.$matches[2].number_format($val1,3,'.',"'").';'.number_format($val2,3,'.',"'").$matches[5];
+            $values .= $leftvalue . ' = ' . $matches[2] . number_format($val1, 3, $decsep, $thousandssep) . ';' . number_format($val2, 3, $decsep, $thousandssep) . $matches[5];
         }
     	if (strlen($leftvalue) > 0 && isset($operator) && strlen($rightvalue) > 0 && eval('return('.$leftvalue.$operator.$rightvalue.');')) {
     	    $valuesspan = '<span';
