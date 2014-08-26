@@ -87,7 +87,7 @@ class qtype_multinumerical_question extends question_graded_automatically {
     			if (strlen(trim($feedbackforthiscondition[0])) > 0) {
     				if ($this->usecolorforfeedback) {
 	    				$feedbackperconditions_computed[$conditionid] = '<span style="color:#090">';
-	    				$feedbackperconditions_computed[$conditionid] .= (preg_match('/(usepackage{color})/', $CFG->filter_tex_latexpreamble)) ? (preg_replace('/(.*)\$\$(.*)\$\$(.*)/', '${1}\$\$\\textcolor{green}{${2}}\$\$${3}', $feedbackforthiscondition[0])) : ($feedbackforthiscondition[0]);
+	    				$feedbackperconditions_computed[$conditionid] .= (preg_match('/(usepackage{color})/', get_config('filter_tex', 'latexpreamble'))) ? (preg_replace('/(.*)\$\$(.*)\$\$(.*)/', '${1}\$\$\\textcolor{green}{${2}}\$\$${3}', $feedbackforthiscondition[0])) : ($feedbackforthiscondition[0]);
 	    				$feedbackperconditions_computed[$conditionid] .= '</span>';
     				}
     				else {
@@ -103,7 +103,7 @@ class qtype_multinumerical_question extends question_graded_automatically {
     			if (isset($feedbackforthiscondition[1]) && strlen(trim($feedbackforthiscondition[1])) > 0) {
     				if ($this->usecolorforfeedback) {
 	    				$feedbackperconditions_computed[$conditionid] = '<span style="color:#f00">';
-	    				$feedbackperconditions_computed[$conditionid] .= (preg_match('/(usepackage{color})/', $CFG->filter_tex_latexpreamble)) ? (preg_replace('/(.*)\$\$(.*)\$\$(.*)/', '${1}\$\$\\textcolor{red}{${2}}\$\$${3}', $feedbackforthiscondition[1])) : ($feedbackforthiscondition[1]);
+	    				$feedbackperconditions_computed[$conditionid] .= (preg_match('/(usepackage{color})/', get_config('filter_tex', 'latexpreamble'))) ? (preg_replace('/(.*)\$\$(.*)\$\$(.*)/', '${1}\$\$\\textcolor{red}{${2}}\$\$${3}', $feedbackforthiscondition[1])) : ($feedbackforthiscondition[1]);
 	    				$feedbackperconditions_computed[$conditionid] .= '</span>';
     				}
     				else {
