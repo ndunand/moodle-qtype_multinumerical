@@ -79,7 +79,7 @@ class qtype_multinumerical_question extends question_graded_automatically {
     	$feedbackperconditions_computed = array();
      	$conditions = $this->get_conditions();
     	foreach ($conditions as $conditionid => $condition) {
-    		$feedbackforthiscondition = explode('|', $feedbackperconditions[$conditionid]);
+    		$feedbackforthiscondition = isset($feedbackperconditions[$conditionid]) ? (explode('|', $feedbackperconditions[$conditionid])) : (array('', ''));
     		$values = '';
     		if ($this->check_condition($condition, $values, $response)) {
     			$score++;
