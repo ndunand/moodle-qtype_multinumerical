@@ -85,3 +85,4 @@ OK : X * Y &gt; 35 | No, X + Y &lt;= 35 !</pre>
     <li>The &quot;Grade calculation&quot; option defines whether a partially correct answer yields a fraction of the grade, or the null grade.</li>
 </ul>
 ';
+$string['privacy:metadata'] = 'The Multinumerical Question Type plugin does not store any personal data.';
