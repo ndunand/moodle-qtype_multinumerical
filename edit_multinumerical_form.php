@@ -40,7 +40,7 @@ class qtype_multinumerical_edit_form extends question_edit_form {
         $mform->addElement('text', 'parameters', get_string('parameters', 'qtype_multinumerical'), array('size' => 80));
         $mform->setType('parameters', PARAM_TEXT);
         $mform->addElement('textarea', 'conditions', get_string('conditions', 'qtype_multinumerical'), array('rows' => 6, 'cols' => 80));
-        $mform->setType('conditions', PARAM_TEXT);
+        $mform->setType('conditions', PARAM_RAW_TRIMMED);
         $mform->addElement('textarea', 'feedbackperconditions', get_string('feedbackperconditions', 'qtype_multinumerical'), array('rows' => 6, 'cols' => 80));
         $mform->setType('feedbackperconditions', PARAM_TEXT);
 
