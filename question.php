@@ -117,13 +117,13 @@ class qtype_multinumerical_question extends question_graded_automatically {
     	return $score;
     }
 
-    private function check_condition($condition, &$values, $response) {
+    public function check_condition($condition, &$values, $response) {
         global $CFG;
         $decsep = get_string('decsep', 'langconfig');
         $thousandssep = get_string('thousandssep', 'langconfig');
         $values = '';
         $interval = false;
-        $operators = array('<=', '>=', '<', '>', '=');
+        $operators = array('!=','<=', '>=', '<', '>', '=');
         $left = null;
         $right = null;
         // careful with operators relative positions here, see following foreach()
