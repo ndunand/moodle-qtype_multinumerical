@@ -43,9 +43,6 @@ class qtype_multinumerical extends question_type {
 
     public function save_question_options($question) {
         global $DB;
-        $result = new stdClass();
-
-        $context = $question->context;
 
         $question->feedbackperconditions = rtrim(str_replace("\r\n", "\n", $question->feedbackperconditions), "\n");
         $question->conditions = rtrim(str_replace("\r\n", "\n", $question->conditions), "\n");
