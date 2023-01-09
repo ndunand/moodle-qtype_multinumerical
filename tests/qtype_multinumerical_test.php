@@ -44,6 +44,7 @@ class qtype_multinumerical_test extends advanced_testcase
         self::assertFalse($this->question->check_condition('X + Y = 11', $values, ['answer_X' => '6', 'answer_Y' => '6']));
         self::assertTrue($this->question->check_condition('X + Y = 0', $values, ['answer_X' => '-5', 'answer_Y' => '5']));
         self::assertTrue($this->question->check_condition('X + Y = -1', $values, ['answer_X' => '-5', 'answer_Y' => '4']));
+        self::assertTrue($this->question->check_condition('X = 0', $values, ['answer_X' => '0']));
     }
 
     public function test_check_condition_superior()
