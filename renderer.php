@@ -68,7 +68,7 @@ class qtype_multinumerical_renderer extends qtype_renderer {
             }
             $input['param_'.$parameter_name] = html_writer::empty_tag('input', $inputattributes['param_'.$parameter_name]);
             $result .= html_writer::start_tag('tr');
-            $result .= html_writer::tag('td', $parameter . ' : ', array('class' => 'paramname'));
+            $result .= html_writer::tag('td', $parameter . ': ', array('class' => 'paramname'));
             $result .= html_writer::tag('td', $input['param_'.$parameter_name], array('class' => 'answer'));
             $result .= html_writer::end_tag('tr');
         }
