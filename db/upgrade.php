@@ -31,9 +31,7 @@ function xmldb_qtype_multinumerical_upgrade($oldversion = 0) {
     global $DB;
     $dbman = $DB->get_manager();
 
-    $result = true;
-
-    if ($result && $oldversion < 2012110100) {
+    if ($oldversion < 2012110100) {
 
         // Define key questionid (foreign) to be dropped form question_multinumerical
         $table = new xmldb_table('question_multinumerical');
@@ -53,6 +51,6 @@ function xmldb_qtype_multinumerical_upgrade($oldversion = 0) {
         upgrade_plugin_savepoint(true, 2014082500, 'qtype', 'multinumerical');
     }
 
-    return $result;
+    return true;
 }
 
