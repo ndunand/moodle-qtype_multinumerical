@@ -94,7 +94,7 @@ class qtype_multinumerical_renderer extends qtype_renderer {
             $response['answer_'.$param] = $qa->get_last_qt_var('answer_'.$param);
         }
         $question->compute_feedbackperconditions($response);
-        return $question->computedfeedbackperconditions;
+        return format_text($question->computedfeedbackperconditions, FORMAT_HTML);
     }
 
     public function correct_response(question_attempt $qa) {
